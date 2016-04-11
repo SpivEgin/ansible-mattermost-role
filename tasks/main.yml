@@ -1,0 +1,51 @@
+# vim:ft=ansible:
+
+- name: Download mattermost-"{{ mattermost_version }}" archive
+  get_url:
+    url:  "{{ mattermost_archive_link }}"
+    dest: /tmp/mattermost_{{ mattermost_version }}.tar.gz
+    mode: 0664
+    force: no
+  register: new_archive
+
+- name: Create mattermost user
+  user:
+    name: "{{ mattermost_system_user }}"
+    createhome: no
+    system: yes
+
+- name: Decompress mattermost archive
+  unarchive:
+    src: /tmp/mattermost_{{ mattermost_version }}.tar.gz
+    dest: /opt
+    owner: "{{ mattermost_system_user }}"
+    group: "{{ mattermost_system_group }}"
+    copy: no
+  when: new_archive|changed
+
+- name: Create mattermost data directory
+  file:
+    path: "{{ mattermost_data_directory }}"
+    state: directory
+    owner: "{{ mattermost_system_user }}"
+    group: "{{ mattermost_system_group }}"
+    mode: 0760
+
+- name: Configure mattermost config from template
+  template:
+    src: config.json.j2
+    dest: "{{ mattermost_config }}"
+    owner: "{{ mattermost_system_user }}"
+    group: "{{ mattermost_system_group }}"
+    mode: 0660
+  notify: restart mattermost
+  ignore_errors: yes
+
+- name: Configure systemd unit file from template
+  template:
+    src: mattermost.service.j2
+    dest: /etc/systemd/system/mattermost.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart mattermost

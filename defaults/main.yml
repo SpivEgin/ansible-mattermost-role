@@ -1,0 +1,44 @@
+---
+
+#########################
+##
+## Version and link to
+## application config
+##
+#########################
+
+mattermost_version: 2.1.0
+mattermost_archive_link: "https://github.com/mattermost/platform/releases/download/v{{ mattermost_version }}/mattermost.tar.gz"
+
+#########################
+##
+## Filetree of mattermost
+##      application
+##
+#########################
+
+mattermost_root: "/opt/mattermost"
+mattermost_data_directory: "{{ mattermost_root }}/data"
+mattermost_user: mattermost
+mattermost_config: "{{ mattermost_root }}/config/config.json"
+
+mattermost_system_user: mattermost
+mattermost_system_group: mattermost
+
+#########################
+##
+## Database connection
+##
+#########################
+mattermost_connection_driver: postgres
+mattermost_pgsql_user: mmuser
+mattermost_pgsql_password: mmuser_password
+mattermost_pgsql_host: 127.0.0.1
+mattermost_pgsql_database: mattermost
+mattermost_pgsql_port: 5432
+mattermost_pgsql_timeout: 10
+mattermost_pgsql_ssl: disable
+
+
+
+

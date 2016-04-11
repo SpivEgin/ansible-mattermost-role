@@ -1,0 +1,6 @@
+---
+
+- name: restart mattermost
+  service:
+    name: mattermost.service
+    state: restarted
