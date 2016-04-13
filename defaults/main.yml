@@ -60,6 +60,7 @@ mattermost_nginx_domain_name: mattermost.{{ ansible_fqdn }}
 mattermost_nginx_config: /etc/nginx/conf.d/mattermost.conf
 mattermost_nginx_ssl: no
 mattermost_nginx_ssl_path: /etc/nginx/ssl
+mattermost_nginx_sites_folder: /etc/nginx/sites-enabled
 ## uncomment this and use if you want
 # mattermost_nginx_ssl_ciphers: 
 mattermost_nginx_ssl_crt_name: mattermost.crt

@@ -52,21 +52,20 @@
 
 - name: Create nginx configuration directory
   file:
-    path: /etc/nginx/conf.d
+    path: "{{ mattermost_nginx_sites_folder }}"
     state: directory
     owner: root
     group: root
     mode: 0770
   when: "{{ mattermost_use_nginx }}"
 
-- name: Configure nginx with ssl
+- name: Configure nginx
   template:
     src: mattermost.conf.j2
-    dest: /etc/nginx/conf.d/mattermost.conf
+    dest: "{{ mattermost_nginx_sites_folder }}"/mattermost.conf
     owner: root
     group: root
     mode: 0644
   notify: reload nginx
   when:
     - "{{ mattermost_use_nginx }}"
-    - "{{ mattermost_nginx_ssl }}"
