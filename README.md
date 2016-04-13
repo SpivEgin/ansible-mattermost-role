@@ -1,7 +1,6 @@
 # ansible-mattermost-role
 
-under developing
-
+Role designed to be used with postgresql, but if you want to use something else - u need just change connection field in config.json.j2 template
 example of playbook 
 -------------------
 
