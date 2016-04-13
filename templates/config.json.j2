@@ -1,6 +1,6 @@
 {
     "ServiceSettings": {
-        "ListenAddress": ":8065",
+        "ListenAddress": "{{ mattermost_listen_address }}:{{ mattermost_listen_port }}",
         "MaximumLoginAttempts": 10,
         "SegmentDeveloperKey": "",
         "GoogleDeveloperKey": "",
@@ -49,7 +49,7 @@
     },
     "FileSettings": {
         "DriverName": "local",
-        "Directory": "./data/",
+        "Directory": "{{ mattermost_data_directory }}",
         "EnablePublicLink": true,
         "PublicLinkSalt": "A705AklYF8MFDOfcwh3I488G8vtLlVip",
         "ThumbnailWidth": 120,

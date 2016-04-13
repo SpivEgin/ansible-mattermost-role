@@ -27,9 +27,19 @@ mattermost_system_group: mattermost
 
 #########################
 ##
+## Networking settings
+##
+#########################
+
+mattermost_listen_address: 127.0.0.1
+mattermost_listen_port: 8065
+
+#########################
+##
 ## Database connection
 ##
 #########################
+
 mattermost_connection_driver: postgres
 mattermost_pgsql_user: mmuser
 mattermost_pgsql_password: mmuser_password
@@ -39,6 +49,19 @@ mattermost_pgsql_port: 5432
 mattermost_pgsql_timeout: 10
 mattermost_pgsql_ssl: disable
 
+#########################
+##
+## Nginx configuration
+##
+#########################
 
-
+mattermost_use_nginx: no
+mattermost_nginx_domain_name: mattermost.{{ ansible_fqdn }}
+mattermost_nginx_config: /etc/nginx/conf.d/mattermost.conf
+mattermost_nginx_ssl: yes
+mattermost_nginx_ssl_path: /etc/nginx/ssl
+## uncomment this and use if you want
+# mattermost_nginx_ssl_ciphers: 
+mattermost_nginx_ssl_crt_name: mattermost.crt
+mattermost_nginx_ssl_key_name: mattermost.key
 
