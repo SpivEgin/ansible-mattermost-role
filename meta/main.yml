@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Ivan Kiselev
+  company: 
+  description: "Install and configure mattermost service "
+  min_ansible_version: 1.9.4
+  license: MIT
+  platforms:
+  - name: Debian
+    versions:
+    - jessie
+  categories:
+  - development
+dependencies: 
+  - ANXS.postgresql
