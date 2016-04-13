@@ -58,7 +58,7 @@ mattermost_pgsql_ssl: disable
 mattermost_use_nginx: no
 mattermost_nginx_domain_name: mattermost.{{ ansible_fqdn }}
 mattermost_nginx_config: /etc/nginx/conf.d/mattermost.conf
-mattermost_nginx_ssl: yes
+mattermost_nginx_ssl: no
 mattermost_nginx_ssl_path: /etc/nginx/ssl
 ## uncomment this and use if you want
 # mattermost_nginx_ssl_ciphers: 
